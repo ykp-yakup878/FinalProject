@@ -48,15 +48,15 @@ namespace Business.Concrete
             return new SuccessResult(Messages.ProductAdded);
         }
 
-        [PerformanceAspect(5)]
+        [PerformanceAspect(1)]
         [CacheAspect]
         public IDataResult<List<Product>> GetAll()
         {
             //İş Kodları
-            if (DateTime.Now.Hour == 2)
-            {
-                return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
-            }
+            //if (DateTime.Now.Hour == 2)
+            //{
+            //    return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
+            //}
             return new SuccessDataResult<List<Product>>(_productDal.GetAll(), Messages.ProductsListed);
 
             //InMemoryProductDal inMemoryProductDal = new InMemoryProductDal(); yanlış kullanım
